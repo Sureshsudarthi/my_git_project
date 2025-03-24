@@ -1,0 +1,1 @@
+select trunc(sysdate,'year') from dual;
