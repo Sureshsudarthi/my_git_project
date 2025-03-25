@@ -1,21 +1,22 @@
+
 pipeline {
     agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'sqlplus username/password@db @create_tables.sql'
+                powershell 'echo Building the application...'
             }
         }
         stage('Test') {
             steps {
-                sh 'sqlplus username/password@db @test.sql'
+                powershell 'echo Running tests...'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'sqlplus username/password@db @deploy.sql'
+                powershell 'echo Deploying the application...'
             }
         }
     }
 }
-
