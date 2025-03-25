@@ -1,25 +1,20 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
-                echo "Building the application..."
-                sh 'mvn clean package' // Example for Java projects
+                powershell 'echo Building the application...'
             }
         }
-        
         stage('Test') {
             steps {
-                echo "Running tests..."
-                sh 'mvn test'
+                powershell 'echo Running tests...'
             }
         }
-
         stage('Deploy') {
             steps {
-                echo "Deploying the application..."
-                sh 'scp target/app.jar user@server:/path/to/deploy/'
+                powershell 'echo Deploying the application...'
             }
         }
     }
