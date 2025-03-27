@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "Checking SQL syntax..."
+    - sqlplus -s username/password@db @create_tables.sql
+
+test-job:
+  stage: test
+  script:
+    - echo "Running SQL Tests..."
+    - sqlplus -s username/password@db @test.sql
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying to Database..."
+    - sqlplus -s username/password@db @deploy.sql
+
+
+
