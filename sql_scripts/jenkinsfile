@@ -1,0 +1,13 @@
+stage('Run SQL Scripts') {
+    steps {
+        script {
+            def sqlFiles = ['create_script.sql', 'insert_script.sql', 'procedure_script.sql', 'test_script.sql']
+            for (file in sqlFiles) {
+                sh """
+                    sqlplus sys/welcome@your_oracle_host:1521/orcl @sql_scripts/create_script.sql
+                """
+            }
+        }
+    }
+}
+
